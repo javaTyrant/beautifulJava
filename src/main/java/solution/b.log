@@ -1,0 +1,126 @@
+# JMH version: 1.22
+# VM version: JDK 1.8.0_144, Java HotSpot(TM) 64-Bit Server VM, 25.144-b01
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA newest.app/Contents/lib/idea_rt.jar=61363:/Applications/IntelliJ IDEA newest.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 3 iterations, 5 s each
+# Measurement: 3 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 50 threads, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: threadLocal.BenchMarkTest.random
+
+# Run progress: 0.00% complete, ETA 00:03:00
+# Fork: 1 of 2
+objc[8747]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java (0x10c14e4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10c1cc4e0). One of the two will be used. Which one is undefined.
+# Warmup Iteration   1: 6002.415 ±(99.9%) 171.981 ns/op
+# Warmup Iteration   2: 6054.638 ±(99.9%) 244.352 ns/op
+# Warmup Iteration   3: 6051.838 ±(99.9%) 153.342 ns/op
+Iteration   1: 6135.629 ±(99.9%) 137.190 ns/op
+Iteration   2: 6080.412 ±(99.9%) 93.029 ns/op
+Iteration   3: 6266.510 ±(99.9%) 123.879 ns/op
+
+# Run progress: 16.67% complete, ETA 00:02:39
+# Fork: 2 of 2
+objc[8865]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java (0x1092884c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1093064e0). One of the two will be used. Which one is undefined.
+# Warmup Iteration   1: 6441.615 ±(99.9%) 134.112 ns/op
+# Warmup Iteration   2: 6500.798 ±(99.9%) 107.319 ns/op
+# Warmup Iteration   3: 5558.403 ±(99.9%) 235.258 ns/op
+Iteration   1: 5244.408 ±(99.9%) 621.435 ns/op
+Iteration   2: 5963.096 ±(99.9%) 205.728 ns/op
+Iteration   3: 6332.970 ±(99.9%) 140.534 ns/op
+
+
+Result "threadLocal.BenchMarkTest.random":
+  6003.837 ±(99.9%) 1106.820 ns/op [Average]
+  (min, avg, max) = (5244.408, 6003.837, 6332.970), stdev = 394.703
+  CI (99.9%): [4897.017, 7110.658] (assumes normal distribution)
+
+
+# JMH version: 1.22
+# VM version: JDK 1.8.0_144, Java HotSpot(TM) 64-Bit Server VM, 25.144-b01
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA newest.app/Contents/lib/idea_rt.jar=61363:/Applications/IntelliJ IDEA newest.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 3 iterations, 5 s each
+# Measurement: 3 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 50 threads, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: threadLocal.BenchMarkTest.threadLocalRandom
+
+# Run progress: 33.33% complete, ETA 00:02:07
+# Fork: 1 of 2
+objc[8993]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java (0x1010ed4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10116b4e0). One of the two will be used. Which one is undefined.
+# Warmup Iteration   1: 67.858 ±(99.9%) 7.707 ns/op
+# Warmup Iteration   2: 54.585 ±(99.9%) 2.399 ns/op
+# Warmup Iteration   3: 52.085 ±(99.9%) 0.318 ns/op
+Iteration   1: 48.184 ±(99.9%) 0.194 ns/op
+Iteration   2: 48.051 ±(99.9%) 0.196 ns/op
+Iteration   3: 48.000 ±(99.9%) 0.270 ns/op
+
+# Run progress: 50.00% complete, ETA 00:01:35
+# Fork: 2 of 2
+objc[9085]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java (0x10c8de4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x10d9034e0). One of the two will be used. Which one is undefined.
+# Warmup Iteration   1: 57.171 ±(99.9%) 0.387 ns/op
+# Warmup Iteration   2: 54.298 ±(99.9%) 2.110 ns/op
+# Warmup Iteration   3: 48.123 ±(99.9%) 0.243 ns/op
+Iteration   1: 48.219 ±(99.9%) 0.234 ns/op
+Iteration   2: 47.881 ±(99.9%) 0.215 ns/op
+Iteration   3: 48.430 ±(99.9%) 0.232 ns/op
+
+
+Result "threadLocal.BenchMarkTest.threadLocalRandom":
+  48.128 ±(99.9%) 0.541 ns/op [Average]
+  (min, avg, max) = (47.881, 48.128, 48.430), stdev = 0.193
+  CI (99.9%): [47.587, 48.668] (assumes normal distribution)
+
+
+# JMH version: 1.22
+# VM version: JDK 1.8.0_144, Java HotSpot(TM) 64-Bit Server VM, 25.144-b01
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java
+# VM options: -javaagent:/Applications/IntelliJ IDEA newest.app/Contents/lib/idea_rt.jar=61363:/Applications/IntelliJ IDEA newest.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 3 iterations, 5 s each
+# Measurement: 3 iterations, 5 s each
+# Timeout: 10 min per iteration
+# Threads: 50 threads, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: threadLocal.BenchMarkTest.threadLocalRandomHolder
+
+# Run progress: 66.67% complete, ETA 00:01:03
+# Fork: 1 of 2
+objc[9175]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java (0x100a374c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x100ab54e0). One of the two will be used. Which one is undefined.
+# Warmup Iteration   1: 129.800 ±(99.9%) 6.277 ns/op
+# Warmup Iteration   2: 130.056 ±(99.9%) 5.578 ns/op
+# Warmup Iteration   3: 119.694 ±(99.9%) 5.950 ns/op
+Iteration   1: 130.789 ±(99.9%) 9.018 ns/op
+Iteration   2: 132.472 ±(99.9%) 4.143 ns/op
+Iteration   3: 140.591 ±(99.9%) 8.834 ns/op
+
+# Run progress: 83.33% complete, ETA 00:00:31
+# Fork: 2 of 2
+objc[9263]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/bin/java (0x104ddb4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_144.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x104e594e0). One of the two will be used. Which one is undefined.
+# Warmup Iteration   1: 133.774 ±(99.9%) 5.523 ns/op
+# Warmup Iteration   2: 142.486 ±(99.9%) 5.259 ns/op
+# Warmup Iteration   3: 128.043 ±(99.9%) 5.407 ns/op
+Iteration   1: 129.937 ±(99.9%) 4.934 ns/op
+Iteration   2: 119.921 ±(99.9%) 4.236 ns/op
+Iteration   3: 127.253 ±(99.9%) 4.691 ns/op
+
+
+Result "threadLocal.BenchMarkTest.threadLocalRandomHolder":
+  130.160 ±(99.9%) 18.932 ns/op [Average]
+  (min, avg, max) = (119.921, 130.160, 140.591), stdev = 6.751
+  CI (99.9%): [111.229, 149.092] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:03:11
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                          Mode  Cnt     Score      Error  Units
+threadLocal.BenchMarkTest.random                   avgt    6  6003.837 ± 1106.820  ns/op
+threadLocal.BenchMarkTest.threadLocalRandom        avgt    6    48.128 ±    0.541  ns/op
+threadLocal.BenchMarkTest.threadLocalRandomHolder  avgt    6   130.160 ±   18.932  ns/op
