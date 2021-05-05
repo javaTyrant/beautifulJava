@@ -9,6 +9,62 @@ import java.util.Map;
  * @since 2021/5/4
  */
 public class PaintHouse {
+    static class MySolution {
+        //的倍数.
+        public static boolean checkSubarraySum(int[] nums, int k) {
+            int len = nums.length;
+            for (int left = 0; left < len - 1; left++) {
+                for (int right = left + 1; right < len; right++) {
+                    int sum = 0;
+                    for (int i = left; i <= right; i++) {
+                        sum += nums[i];
+                    }
+                    if (sum % k == 0) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static void main(String[] args) {
+            int[] arr = {23, 2, 4, 6, 7, 6};
+            System.out.println(checkSubarraySum(arr, 6));
+        }
+
+        //740. 删除并获得点数
+        //给你一个整数数组nums，你可以对它进行一些操作。
+        //每次操作中，选择任意一个nums[i]，删除它并获得nums[i]的点数。之后，你必须删除每个等于nums[i] - 1或nums[i] + 1的元素。
+        //开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。
+        public int deleteAndEarn(int[] nums) {
+            //将数组变换，转换为每个值的所有点数。就成了打家劫舍问题
+            int[] trans = new int[10001];
+            for (int i = 0; i < nums.length; i++) {
+                trans[nums[i]] += nums[i];
+            }
+
+            int[] dp = new int[10001];
+
+            dp[0] = 0;
+            dp[1] = trans[1];
+            for (int i = 2; i < trans.length; i++) {
+                dp[i] = Math.max(dp[i - 1], dp[i - 2] + trans[i]);
+            }
+
+            return dp[dp.length - 1];
+        }
+    }
+
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+
     //给定一个包含 非负数 的数组和一个目标 整数 k ，编写一个函数来判断该数组是否含有连续的子数组，其大小至少为 2，
     //且总和为 k 的倍数，即总和为 n * k ，其中 n 也是一个整数。
     //连续的子数组和 ontinuous Subarray Sum
