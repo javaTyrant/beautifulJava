@@ -1,6 +1,5 @@
 package dp;
 
-import edu.princeton.cs.algs4.Stack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

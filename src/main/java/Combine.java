@@ -1,5 +1,3 @@
-import edu.princeton.cs.algs4.In;
-
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -5,6 +5,12 @@ package bit;
  * @since 2021/5/7
  **/
 public class Xor {
+    //nums[i] = start + 2*i
+    public static void main(String[] args) {
+        Xor solution = new Xor();
+        System.out.println(solution.xorOperation(5, 2));
+    }
+
     public int xorOperation(int n, int start) {
         int s = start >> 1, e = n & start & 1;
         int ret = sumXor(s - 1) ^ sumXor(s + n - 1);
