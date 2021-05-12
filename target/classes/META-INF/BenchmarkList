@@ -1,3 +1,0 @@
-JMH S 29 current.ThreadLocalRandomTest S 71 current.generated.ThreadLocalRandomTest_threadLocalRandomHolder_jmhTest S 23 threadLocalRandomHolder S 11 AverageTime I 2 50 A 1 1 1 E I 1 3 T 3 5 s E I 1 3 T 3 5 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 29 current.ThreadLocalRandomTest S 65 current.generated.ThreadLocalRandomTest_threadLocalRandom_jmhTest S 17 threadLocalRandom S 11 AverageTime I 2 50 A 1 1 1 E I 1 3 T 3 5 s E I 1 3 T 3 5 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
-JMH S 29 current.ThreadLocalRandomTest S 54 current.generated.ThreadLocalRandomTest_random_jmhTest S 6 random S 11 AverageTime I 2 50 A 1 1 1 E I 1 3 T 3 5 s E I 1 3 T 3 5 s E I 1 1 E E E E E E U 11 NANOSECONDS E E 
