@@ -13,35 +13,6 @@ public class HeapSort {
         System.out.println(Arrays.toString(arr));
     }
 
-    //字符串相乘
-    public String multiply(String num1, String num2) {
-        int sumLen = num1.length() + num2.length();
-        //用数组
-        int[] res = new int[sumLen];
-        for (int i = 0; i < num1.length(); i++) {
-            int num11 = num1.charAt(num1.length() - 1 - i) - '0';//3
-            for (int j = 0; j < num2.length(); j++) {
-                int num22 = num2.charAt(num2.length() - 1 - j) - '0';//6,5,4
-                res[i + j] += num11 * num22;            //序列和相同相加
-            }
-        }
-        for (int i = 0; i < res.length - 1; i++) {
-            if (res[i] >= 10) {
-                res[i + 1] += res[i] / 10;//后位加上
-                res[i] %= 10;//余数
-            }
-        }
-        int i = res.length - 1;
-        while (i > 0 && res[i] == 0) {
-            i--;
-        } // 去除结果前面的 0
-        StringBuilder sb = new StringBuilder();
-        for (; i >= 0; i--) {
-            sb.append(res[i]);
-        }
-        return sb.toString();
-    }
-
     //：将待排序序列构造成一个大顶堆，此时，整个序列的最大值就是堆顶的根节点。将其与末尾元素进行交换，此时末尾就为最大值。
     // 然后将剩余n-1个元素重新构造成一个堆，这样会得到n个元素的次小值。如此反复执行，便能得到一个有序序列了
     public static void sort(int[] pq) {
