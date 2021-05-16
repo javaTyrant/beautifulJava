@@ -46,3 +46,7 @@ mainframer
 # exclude vscode files
 .vscode/
 *.factorypath
+src/main/java/designpattern/callback/
+src/main/java/fp/
+"src/main/study/\346\226\207\346\241\243/spring cloud\345\205\250\345\256\266\346\241\266\345\255\246\344\271\240/"
+"src/main/study/\346\226\207\346\241\243/\350\256\241\347\275\221/"
