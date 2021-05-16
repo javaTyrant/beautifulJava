@@ -26,3 +26,8 @@ eventbus顾名思义,事件总线.
 
 ## 实现:
 
+主要是post和register操作.
+
+```java
+```
+

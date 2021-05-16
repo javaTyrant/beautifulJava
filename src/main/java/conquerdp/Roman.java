@@ -53,4 +53,37 @@ public class Roman {
         }
         return sb.toString();
     }
+
+    public int romanToInt(String s) {
+        //返回
+        int sum = 0;
+        //前一个数字
+        int preNum = getInt(s.charAt(0));
+        //
+        for (int i = 1; i < s.length(); i++) {
+            //获取当前的值
+            int num = getInt(s.charAt(i));
+            //小则减
+            if (preNum < num) {
+                sum -= preNum;
+            } else {
+                //大则加
+                sum += preNum;
+            }
+            //更新preNum
+            preNum = num;
+        }
+        return sum + preNum;
+    }
+
+    public static int getInt(char c) {
+        if (c == 'I') return 1;
+        else if (c == 'V') return 5;
+        else if (c == 'X') return 10;
+        else if (c == 'L') return 50;
+        else if (c == 'C') return 100;
+        else if (c == 'D') return 500;
+        else if (c == 'M') return 1000;
+        else return 0;
+    }
 }
