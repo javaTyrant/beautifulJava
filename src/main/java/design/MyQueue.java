@@ -7,24 +7,32 @@ import java.util.Stack;
  * @since 2020/6/30
  */
 public class MyQueue<T> {
-    private Stack<T> stack1 = new Stack<>();
-    private Stack<T> stack2 = new Stack<>();
+    Stack<Integer> stack1;
+    Stack<Integer> stack2;
 
-    /**
-     * 队列是先进先出的
-     * 栈是先进后出的
-     * 栈1负责插入
-     */
-    public void appendTail(T t) {
-        stack1.add(t);
+    public MyQueue() {
+        stack1 = new Stack<>();
+        stack2 = new Stack<>();
     }
 
-    public T popHead() {
-        //如何删除呢
-        //如果stack1不为空
-        if (stack1.size() > 0) {
+    public void appendTail(int value) {
+        //直接往栈一添加
+        stack1.push(value);
+    }
 
+    public int deleteHead() {
+        //如果栈2没有元素
+        if (stack2.size() <= 0) {
+            //如果栈一也没元素了
+            if (stack1.size() <= 0) return -1;
+            //获取1的大小
+            int size = stack1.size();
+            //放入stack2
+            for (int i = 0; i < size; i++) {
+                stack2.push(stack1.pop());
+            }
         }
+        //从stack2取.
         return stack2.pop();
     }
 }

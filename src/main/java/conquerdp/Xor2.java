@@ -5,13 +5,28 @@ import java.util.Set;
 
 /**
  * 数组中两个数的最大异或值
- *
+ * 右移:
+ * 左移:
  * @author lumac
  * @since 2021/5/16
  */
 public class Xor2 {
+    //O(N)的复杂度.
+    public static void main(String[] args) {
+        int[] arr = {3, 10, 5, 25, 2, 8};
+        //0000 0011 3
+        //0000 1010 10
+        //0000 0101 5
+        //0001 1001 25
+        //0000 0010 2
+        //0000 1000 8
+        Xor2 solution = new Xor2();
+        System.out.println(solution.findMaximumXOR2(arr));
+        System.out.println(solution.findMaximumXOR(arr));
+    }
+
     // 最高位的二进制位编号为 30
-    static final int HIGH_BIT = 30;
+    static final int HIGH_BIT = 5;
 
     public int findMaximumXOR2(int[] nums) {
         int x = 0;
@@ -23,7 +38,6 @@ public class Xor2 {
                 // 只需将其右移 k 位
                 seen.add(num >> k);
             }
-
             // 目前 x 包含从最高位开始到第 k+1 个二进制位为止的部分
             // 我们将 x 的第 k 个二进制位置为 1，即为 x = x*2+1
             int xNext = x * 2 + 1;
@@ -31,7 +45,11 @@ public class Xor2 {
 
             // 枚举 i
             for (int num : nums) {
+                //why? 因为 异或的交换律：a^b=c,a^c=b，b^c=a
+                // 这里从结果倒推是否存在另一个数，它从最高位开始到第 k 个二进制位为止的部分，等于x_next ^ (num >> k)，
+                // 交换律成立，k位上可以置一。 seen.count(x_next ^ (num >> k)
                 if (seen.contains(xNext ^ (num >> k))) {
+                    //true.
                     found = true;
                     break;
                 }
