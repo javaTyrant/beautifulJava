@@ -3,6 +3,8 @@ package sort;
 import java.util.Arrays;
 
 /**
+ * 给你一个数组如何找到最大的值,然后放入到首节点?
+ *
  * @author lumac
  * @since 2020/6/29
  */
@@ -19,13 +21,14 @@ public class HeapSort {
         int n = pq.length;
         //能保证k一定是根节点吗
         for (int k = n / 2; k >= 1; k--) {
+            System.out.println("k is :" + k);
             sink(pq, k, n);
         }
         int k = n;
         //k肯定是大于0的为什么=1可以不用呢?交换的是00,重复了,没有必要
         while (k >= 1) {
             //
-            exch(pq, 1, k--);
+            swap(pq, 1, k--);
             //
             sink(pq, 1, k);
         }
@@ -41,7 +44,7 @@ public class HeapSort {
             //如果k大于j就不用交换了
             if (!less(pq, k, j)) break;
             //arr[k] >= arr[j],交换下
-            exch(pq, k, j);
+            swap(pq, k, j);
             //k = j
             k = j;
         }
@@ -53,7 +56,7 @@ public class HeapSort {
         return pq[i - 1] < pq[j - 1];
     }
 
-    static void exch(int[] pq, int i, int j) {
+    static void swap(int[] pq, int i, int j) {
         //都是减一,等于索引0没有放位置
         int swap = pq[i - 1];
         pq[i - 1] = pq[j - 1];

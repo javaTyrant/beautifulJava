@@ -14,13 +14,11 @@ public class Day1 {
         char[] S = s.toCharArray();
         int slow = 0, fast = 0;
         while (fast <= S.length) {
-            if (fast != S.length && S[fast] != ' ') {
-                fast++;
-            } else {
+            if (fast == S.length || S[fast] == ' ') {
                 swap(S, slow, fast - 1);
                 slow = fast + 1;
-                fast++;
             }
+            fast++;
         }
         return new String(S);
     }
@@ -109,17 +107,17 @@ public class Day1 {
 
         //
         dp[0] = obstacleGrid[0][0] == 0 ? 1 : 0;
-        for (int i = 0; i < row; ++i) {
+        for (int[] ints : obstacleGrid) {
             for (int j = 0; j < col; ++j) {
                 //如果遇到障碍物
-                if (obstacleGrid[i][j] == 1) {
+                if (ints[j] == 1) {
                     //赋值0,如果只有一行,也遇到了一个1,那么也直接设置成0.
                     dp[j] = 0;
                     //回到循环
                     continue;
                 }
                 //如果j > 1 且当前的点是0
-                if (j - 1 >= 0 && obstacleGrid[i][j - 1] == 0) {
+                if (j - 1 >= 0 && ints[j - 1] == 0) {
                     //累加
                     dp[j] += dp[j - 1];
                 }
@@ -129,7 +127,7 @@ public class Day1 {
         return dp[col - 1];
     }
 
-    class Node {
+    static class Node {
         public int val;
         public Node left;
         public Node right;
