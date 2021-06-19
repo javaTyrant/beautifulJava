@@ -89,21 +89,24 @@ public class LeetCode322 {
             return dp[amount] > amount ? -1 : dp[amount];
         }
 
-        //零钱兑换2
+        //零钱兑换2:amount = 5, coins = [1, 2, 5]
+        //用dp[x] 表示金额之和等于x的硬币组合数，目标是求dp[amount]。
         public static int change(int amount, int[] coins) {
             //dp的含义是?
             int[] dp = new int[amount + 1];
-            //和1的不同
+            //等于0的有一种方案.
             dp[0] = 1;
             //先选硬币
             for (int coin : coins) {
-                //
+                //再判断.
                 for (int i = 0; i + coin <= amount; i++) {
+                    //
                     dp[i + coin] += dp[i];
                 }
             }
             return dp[amount];
         }
+
         public static void main(String[] args) {
             int[] arr = {470, 18, 66, 301, 403, 112, 360};
             int[] coins = {1, 2, 5};

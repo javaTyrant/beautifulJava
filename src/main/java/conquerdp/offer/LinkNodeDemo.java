@@ -68,12 +68,6 @@ public class LinkNodeDemo implements Link, Tree {
         return j == popped.length;
     }
 
-    public static void main(String[] args) {
-        int[] p = {1, 2, 3, 4, 5}, q = {4, 5, 3, 2, 1};
-        System.out.println(validateStackSequences(p, q));
-        int[] arr = {1, 1, 0, 0, 0, 1, 1, 1};
-        System.out.println(findMaxLength(arr));
-    }
 
     class Node {
         int val;
@@ -161,6 +155,7 @@ public class LinkNodeDemo implements Link, Tree {
         }
         return res;
     }
+
     //相同数量的最大长度.好题.
     public static int findMaxLength(int[] nums) {
         int maxLength = 0;
@@ -183,5 +178,134 @@ public class LinkNodeDemo implements Link, Tree {
             }
         }
         return maxLength;
+    }
+
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        /*
+         定义两个指针, 第一轮让两个到达末尾的节点指向另一个链表的头部, 最后如果相遇则为交点(在第一轮移动中恰好抹除了长度差)
+         两个指针等于移动了相同的距离, 有交点就返回, 无交点就是各走了两条指针的长度
+         */
+        if (headA == null || headB == null) return null;
+        ListNode pA = headA, pB = headB;
+        // 在这里第一轮体现在pA和pB第一次到达尾部会移向另一链表的表头, 而第二轮体现在如果pA或pB相交就返回交点, 不相交最后就是null==null
+        while (pA != pB) {
+            pA = (pA == null) ? headB : pA.next;
+            pB = (pB == null) ? headA : pB.next;
+        }
+        return pA;
+    }
+
+
+    //最小的k个数
+    public static int[] getLeastNumbers(int[] arr, int k) {
+        int low = 0, high = arr.length - 1;
+        while (low < high) {
+            int i = partition(arr, low, high);
+            if (i == k) {
+                return Arrays.copyOf(arr, k);
+            }
+            if (i > k) high = i - 1;
+            if (i < k) low = i + 1;
+        }
+        return Arrays.copyOf(arr, k);
+    }
+
+    //
+    static int partition(int[] nums, int low, int high) {
+        int pivot = nums[low];
+        while (low < high) {
+            while (low < high && nums[high] >= pivot)
+                high--;
+            nums[low] = nums[high];
+            while (low < high && nums[low] <= pivot)
+                low++;
+            nums[high] = nums[low];
+        }
+        nums[low] = pivot;
+        return low;
+    }
+
+    //回溯
+    int count = 0;
+
+    public int findTargetSumWays1(int[] nums, int target) {
+        backtrack(nums, target, 0, 0);
+        return count;
+    }
+
+    public void backtrack(int[] nums, int target, int index, int sum) {
+        //base case .如果index == nums的长度 且 sum == target
+        if (index == nums.length) {
+            if (sum == target) {
+                //++
+                count++;
+            }
+        } else {
+            //加
+            backtrack(nums, target, index + 1, sum + nums[index]);
+            //减
+            backtrack(nums, target, index + 1, sum - nums[index]);
+        }
+    }
+
+    //若上式成立，问题转化成在数组nums 中选取若干元素，使得这些元素之和等于neg，
+    //其中dp[i][j] 表示在数组nums的前i个数中选取元素，使得这些元素之和等于 j 的方案数。
+    public static int findTargetSumWays(int[] nums, int target) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        int diff = sum - target;
+        if (diff < 0 || diff % 2 != 0) {
+            return 0;
+        }
+        int n = nums.length, neg = diff / 2;
+        int[][] dp = new int[n + 1][neg + 1];
+        dp[0][0] = 1;
+        for (int i = 1; i <= n; i++) {
+            int num = nums[i - 1];
+            for (int j = 0; j <= neg; j++) {
+                dp[i][j] = dp[i - 1][j];
+                if (j >= num) {
+                    dp[i][j] += dp[i - 1][j - num];
+                }
+            }
+        }
+        return dp[n][neg];
+    }
+
+    public int findTargetSumWaysOpt(int[] nums, int target) {
+        int sum = 0;
+        for (int num : nums) {
+            sum += num;
+        }
+        int diff = sum - target;
+        if (diff < 0 || diff % 2 != 0) {
+            return 0;
+        }
+        int neg = diff / 2;
+        int[] dp = new int[neg + 1];
+        dp[0] = 1;
+        for (int num : nums) {
+            for (int j = neg; j >= num; j--) {
+                dp[j] += dp[j - num];
+            }
+        }
+        return dp[neg];
+    }
+
+    public static void main(String[] args) {
+        int[] p = {1, 2, 3, 4, 5}, q = {4, 5, 3, 2, 1};
+        System.out.println(validateStackSequences(p, q));
+        int[] arr = {1, 1, 0, 0, 0, 1, 1, 1};
+        System.out.println(findMaxLength(arr));
+        int[] arr1 = {1, 3, 2, 5, 7, 2};
+        System.out.println(Arrays.toString(getLeastNumbers(arr1, 3)));
+        int[] a = {1, 1, 1, 1, 1};
+        System.out.println(findTargetSumWays(a, 3));
+    }
+
+    public int lastStoneWeightII(int[] stones) {
+        return 1;
     }
 }
