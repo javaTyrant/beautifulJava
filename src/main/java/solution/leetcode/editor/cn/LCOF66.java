@@ -30,4 +30,15 @@ public class LCOF66 {
         int[] arr = {1, 2, 3, 4, 5};
         System.out.println(Arrays.toString(constructArr(arr)));
     }
+
+    //剑指 Offer 65. 不用加减乘除做加法
+    public int add(int a, int b) {
+        return b == 0 ? a : add(a ^ b, (a & b) << 1);
+    }
+
+    //求1+2+…+n
+    public int sumNums(int n) {
+        boolean flag = (n > 0) && (n += sumNums(n - 1)) > 0;
+        return n;
+    }
 }
