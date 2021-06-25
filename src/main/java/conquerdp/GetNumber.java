@@ -1,6 +1,8 @@
 package conquerdp;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -8,12 +10,6 @@ import java.util.Map;
  * @since 2021/6/19
  **/
 public class GetNumber {
-    public static void main(String[] args) {
-        System.out.println(findNthDigit(197));
-        int[] arr = {1, 2, 2, 2, 2, 2, 2, 3};
-        System.out.println(search(arr, 2));
-    }
-
     //400. 第 N 位数字
     //第一步，我们得找到 n 属于哪个数位里的索引。比如 n = 5，那 n 就是个位这个数位里的索引；或者 n = 11，那 n 就是十位这个数位里的索引。
     //第二步，确定了 n 属于哪个数位，我们需要进一步定位到 n 具体属于哪个数。比如 n = 11，指的就是 10 这个数。
@@ -40,8 +36,8 @@ public class GetNumber {
     public String minNumber(int[] nums) {
         quickSort(nums, 0, nums.length - 1);
         StringBuilder res = new StringBuilder();
-        for (int i = 0; i < nums.length; i++) {
-            res.append(nums[i]);
+        for (int num : nums) {
+            res.append(num);
         }
         return res.toString();
     }
@@ -120,7 +116,6 @@ public class GetNumber {
     //最长不含重复字符的子字符串
     public int lengthOfLongestSubstring(String s) {
         Map<Character, Integer> window = new HashMap<>();
-        char[] chars = s.toCharArray();
         int ans = 0;
         for (int end = 0, start = 0; end < s.length(); end++) {
             char c = s.charAt(end);
@@ -247,5 +242,42 @@ public class GetNumber {
         while (left < nums.length && nums[left++] == target)
             count++;
         return count;
+    }
+
+    //401. 二进制手表
+    //二进制手表顶部有 4 个 LED 代表 小时（0-11），底部的 6 个 LED 代表 分钟（0-59）。
+    //每个 LED 代表一个 0 或 1，最低位在右侧。
+    //给你一个整数 turnedOn ，表示当前亮着的 LED 的数量，返回二进制手表可以表示的所有可能时间。
+    //你可以 按任意顺序 返回答案。
+    //其高 4位为小时，低 6位为分钟
+    public static List<String> readBinaryWatch(int num) {
+        List<String> resList = new ArrayList<>();
+        for (int i = 0; i < 12; ++i)
+            for (int j = 0; j < 60; ++j)
+                // i << 6 | j是什么意思?
+                if (Integer.bitCount((i << 6) | j) == num)
+                    resList.add(i + ":" + (j > 9 ? "" : "0") + j);
+        return resList;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(findNthDigit(197));
+        int[] arr = {1, 2, 2, 2, 2, 2, 2, 3};
+        System.out.println(search(arr, 2));
+        System.out.println(readBinaryWatch(1));
+    }
+
+    //0～n-1中缺失的数字[0,1,2,3,4,5,6,7,9]
+    public int missingNumber(int[] nums) {
+        int l = 0, r = nums.length - 1;
+        while (l <= r) {
+            int mid = l + (r - l) / 2;
+            if (nums[mid] != mid) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        }
+        return l;
     }
 }

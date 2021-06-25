@@ -347,7 +347,7 @@ public class Day9 implements Tree, Link {
                     right--;
                 } else if (r > 0) {
                     right--;
-                } else if (r < 0) {
+                } else {
                     left++;
                 }
             }

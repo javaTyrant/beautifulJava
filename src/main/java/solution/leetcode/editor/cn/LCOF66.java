@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @since 2020/12/17
  */
 public class LCOF66 {
-    //指 Offer 66. 构建乘积数组
+    //指 Offer 66. 构建乘积数组:这个思路太牛逼了.
     public static int[] constructArr(int[] a) {
         int[] res = new int[a.length];
         for (int i = 0, cur = 1; i < a.length; i++) {
