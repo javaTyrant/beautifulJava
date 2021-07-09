@@ -211,6 +211,7 @@ public class Day4 {
         if (n == 0) return 0;
         //记录第一个相等的位置
         int pn = 0;
+        //
         while (pn < m - n + 1) {
             //找到hay里面第一个等于needle首字符串位置
             while (pn < m - n + 1 && haystack.charAt(pn) != needle.charAt(0)) pn++;
