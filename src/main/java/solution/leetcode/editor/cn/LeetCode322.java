@@ -77,11 +77,11 @@ public class LeetCode322 {
             //终于搞懂为啥要双层遍历了,第一层:处理每个金额
             for (int i = 1; i <= amount; i++) {
                 //第二层:选择用哪个硬币的最优解
-                for (int j = 0; j < coins.length; j++) {
+                for (int coin : coins) {
                     //如果硬币的值小于当前的索引,才计算,不然值就大了
-                    if (coins[j] <= i) {
+                    if (coin <= i) {
                         //取最小,+1是加的当前金额的数量
-                        dp[i] = Math.min(dp[i], dp[i - coins[j]] + 1);
+                        dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                     }
                 }
             }

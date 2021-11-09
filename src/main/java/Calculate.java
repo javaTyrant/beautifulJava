@@ -107,7 +107,7 @@ public class Calculate {
     }
 
     public int calculate1(String s) {
-        Deque<Integer> ops = new LinkedList<Integer>();
+        Deque<Integer> ops = new LinkedList<>();
         ops.push(1);
         int sign = 1;
 
